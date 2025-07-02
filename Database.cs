@@ -4,7 +4,13 @@ using System.Data;
 
 public static partial class Database
 {
-    private static int CommandTimeout = 30;
+    private static int _commandTimeout = 30;
+
+    public static int CommandTimeout
+    {
+        get => _commandTimeout;
+        set => _commandTimeout = value;
+    }
 
     public delegate void DataReaderDelegate(IDataReader dataRow);
 
