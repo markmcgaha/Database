@@ -16,7 +16,10 @@ public static partial class Database
             command.CommandType = cmdType;
             command.CommandTimeout = CommandTimeout;
             command.CommandText = sql;
-            parameterList.ForEach(p => { command.Parameters.Add(p); });
+            if (parameterList != null)
+            {
+                parameterList.ForEach(p => { command.Parameters.Add(p); });
+            }
             return command.ExecuteNonQuery();
         }
     }
@@ -39,7 +42,10 @@ public static partial class Database
             command.CommandType = cmdType;
             command.CommandTimeout = CommandTimeout;
             command.CommandText = sql;
-            parameterList.ForEach(p => { command.Parameters.Add(p); });
+            if (parameterList != null)
+            {
+                parameterList.ForEach(p => { command.Parameters.Add(p); });
+            }
             ExecuteReader(command, fn);
         }
         return result;
@@ -61,7 +67,10 @@ public static partial class Database
             command.CommandType = cmdType;
             command.CommandTimeout = CommandTimeout;
             command.CommandText = sql;
-            parameterList.ForEach(p => { command.Parameters.Add(p); });
+            if (parameterList != null)
+            {
+                parameterList.ForEach(p => { command.Parameters.Add(p); });
+            }
             return command.ExecuteScalar();
         }
     }
